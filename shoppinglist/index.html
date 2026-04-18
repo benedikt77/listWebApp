@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Listenverwaltung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3373da">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+  <div class="app">
+    <!-- Linke Spalte: Listenübersicht -->
+    <aside class="sidebar" aria-label="Listenübersicht">
+      <h1><a href="/">Listen</a></h1>
+
+      <section>
+        <h2>Verfügbare Listen</h2>
+        <ul class="lists" id="lists">
+          <!-- Beispiel-Einträge, kannst du später dynamisch ersetzen -->
+          <li>
+            <button type="button" data-list-id="1">
+              Einkaufsliste
+            </button>
+          </li>
+          <li>
+            <button type="button" data-list-id="2">
+              Aufgaben
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Neue Liste</h2>
+        <form id="new-list-form">
+          <label for="new-list-name">Name</label><br />
+          <input type="text" id="new-list-name" name="name" autocomplete="off" />
+          <button type="submit">Liste anlegen</button>
+        </form>
+      </section>
+    </aside>
+
+    <!-- Rechte Spalte: Inhalt der ausgewählten Liste -->
+    <main class="main" aria-label="Listeninhalt">
+      <header class="list-header">
+        <h1 id="active-list-title">
+          Keine Liste ausgewählt          
+        </h1>
+        <div id="active-list-actions" hidden>
+          
+        </div>
+      </header>
+      <img id="generated-image" src="./src/generated-image.png" alt="Siet und Faultier">
+
+      <section aria-label="Einträge der Liste">
+        <h2 id="headline-entries"></h2>
+
+        <ul class="items" id="items">
+          <!-- Beispiel-Einträge 
+          <li data-item-id="a1">
+            <input type="text" value="Milch kaufen" />
+            <button type="button">Löschen</button>
+          </li>
+          -->
+        </ul>
+
+        <form id="new-item-form">
+          <input type="hidden" name="listId" />
+          <label for="new-item-text">Neuer Eintrag</label><br />
+          <input type="text" id="new-item-text" name="text" autocomplete="off" />
+          <button type="submit">Hinzufügen</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Hier kannst du dann dein TypeScript/JavaScript einbinden -->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

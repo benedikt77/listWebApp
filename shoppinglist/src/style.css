@@ -1,0 +1,245 @@
+[hidden] {
+  display: none !important;
+}
+
+:root {
+  --bg: #ffffff; 
+  --bg-elevated: #7f95c3;
+  --border-subtle: #1f2937;
+  --accent: #3373da;
+  --accent-soft: rgba(229, 233, 238, 0.12);
+  --text: #f9fafb;
+  --text-muted: #9ca3af;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text);
+}
+
+
+/* App-Layout: Sidebar links, Inhalt rechts */
+.app {
+  display: flex;
+  min-height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  width: 260px;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+  border-radius: 0.75rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ========== Hauptbereich ========== */
+.main {
+  flex: 1;
+  padding: 1.5rem 1.75rem;
+  box-sizing: border-box;
+  border-radius: 0.75rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ========== Listenübersicht (links) ========== */
+
+.lists {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.lists li {
+  margin-bottom: 0.25rem;
+}
+
+.lists button {
+  width: 100%;
+  text-align: left;
+  border-radius: 0.4rem;
+}
+
+/* HERVORHEBUNG: aktive Liste */
+.lists button.is-active {
+  background: var(--accent-soft);
+  /* border-color: var(--accent); */
+  color: var(--text);
+}
+
+/* ========== Einträge der aktiven Liste (rechts) ========== */
+
+.list-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#active-list-actions {
+  margin-left: auto; /* schiebt den Inhalt nach rechts */
+}
+
+
+
+/* UL/OL, in dem deine Einträge stehen */
+.items {
+  list-style: none;          
+  margin: 1.5rem 0;          /* mehr Abstand vor/nach der ganzen Liste */
+  padding-left: 0;
+}
+
+/* Eintrag: künstlicher Bullet + Text + Button-Container */
+.items li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;    /* enger Abstand zwischen Einträgen */
+  padding-left: 1.5rem;
+  line-height: 1.1;          /* Zeilenhöhe etwas enger */
+}
+
+/* künstlicher Spiegelstrich / Punkt */
+.items li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+/* Text des Eintrags */
+.items li p {
+  margin: 0;
+  flex: 1;
+}
+
+button {
+  border-radius: 0.4rem;             /* <– etwas runder */
+  /* border: 1px solid var(--accent); */
+  /* background: var(--accent); */
+  /* color: white; */
+  font: inherit;
+  /* padding: 0.45rem 0.9rem; */
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.05s,
+    box-shadow 0.15s ease;
+}
+
+button:hover {
+  /* background: #2563eb; */
+  /* border-color: #2563eb; */
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+/* Alle Text-Eingabefelder: Neue Liste + Neuer Eintrag */
+input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.4rem;           /* <–– deine Rundung */
+  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  color: #111827;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+
+
+
+/* Einträge von "bene" grün einfärben */
+.entry-bene p  { color: #2b653f; }
+.entry-carina p { color: #0c78a6; }
+.entry-test p   { color: #e879f9; }
+
+/* ========== Bild ========== */
+
+#generated-image {
+  display: block;
+  width: 100%;          /* nimmt die ganze Breite der Main-Spalte */
+  max-width: 640px;     /* aber nicht größer als 480px */
+  height: auto;
+  border-radius: 16px;
+  margin-top: 1rem;
+  object-fit: cover;
+}
+
+/* ========== Sonstiges ========== */
+
+h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2 {
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+
+.sidebar h1 {
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+.sidebar h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  /* color: var(--text-muted); */
+  letter-spacing: 0.15em;
+}
+
+/* Der Abstans von "Neue Liste" nach oben */
+.sidebar section + section {
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .app {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 1rem 1.25rem;
+  }
+
+  .main {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    margin-top: 0.5rem;
+  }
+}
+
